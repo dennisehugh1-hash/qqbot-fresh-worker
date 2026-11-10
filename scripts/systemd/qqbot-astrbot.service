@@ -1,0 +1,15 @@
+[Unit]
+Description=AstrBot runtime (optional real-time engine)
+After=network.target qqbot-bridge.service qqbot-qq.service
+
+[Service]
+Type=simple
+User=<user>
+WorkingDirectory=%h/workspace/qqbot
+ExecStart=%h/workspace/qqbot/venv/bin/python -m astrbot.main
+Restart=always
+RestartSec=10
+Environment=HOME=%h
+
+[Install]
+WantedBy=default.target

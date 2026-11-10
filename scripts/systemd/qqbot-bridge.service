@@ -1,0 +1,17 @@
+[Unit]
+Description=NapCat-to-Muse bridge (listens 127.0.0.1:6198)
+After=network.target
+
+[Service]
+Type=simple
+User=<user>
+WorkingDirectory=%h/workspace/qqbot/bridge
+ExecStart=%h/workspace/qqbot/bridge/bridge.py
+Restart=always
+RestartSec=5
+# Stdout/stderr land in the unit journal; the hook's debug file and the
+# bridge debug-last-post.txt carry the last raw post for diagnosis.
+Environment=BRIDGE_PORT=6198
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,21 @@
+[Unit]
+Description=QQ client (NapCat) for bot account <BOT_QQ>
+After=network.target
+Wants=qqbot-bridge.service
+
+[Service]
+Type=simple
+User=<user>
+WorkingDirectory=%h/Napcat
+# No -q flag: clean QR wait only. A failed -q drags the login page into
+# SMS verification and poisons the QR endpoint until QQ fully restarts.
+# The machine-id restore in start-all.sh (run before this unit) is what
+# keeps a replaced host logged in, not a quick-login flag.
+ExecStart=%h/Napcat/opt/QQ/resources/app/app_launcher/napcat/NapCat
+Restart=always
+RestartSec=10
+Environment=HOME=%h
+Environment=XDG_RUNTIME_DIR=/run/user/%U
+
+[Install]
+WantedBy=default.target

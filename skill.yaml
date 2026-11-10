@@ -1,0 +1,5 @@
+name: "qqbot-fresh-worker"
+title: "QQ Bot on Fresh-Worker Wakes"
+description: "run a NapCat QQ bot whose replies are composed by a fresh Muse worker per message, with systemd supervision, keepalive auto-recovery, outage catch-up, and split private/group memory."
+category: "Work and knowledge"
+include_in_prompt: false
